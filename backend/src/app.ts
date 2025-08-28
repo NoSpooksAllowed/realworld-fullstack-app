@@ -5,20 +5,12 @@ import profilesRouter from "./routes/api/profiles";
 import articlesRouter from "./routes/api/articles";
 import tagsRouter from "./routes/api/tags";
 import generalErrorHandler from "./middleware/errorHandling/generalErrorHandler";
-import cors from "cors";
 import {
   authErrorHandler,
   prismaErrorHandler,
 } from "./middleware/errorHandling";
 
 const app = express();
-
-app.use(
-  cors({
-    origin: true, // разрешить любой origin
-    credentials: true,
-  })
-);
 
 // Allows parsing of json in the body of the request.
 app.use(express.json());
