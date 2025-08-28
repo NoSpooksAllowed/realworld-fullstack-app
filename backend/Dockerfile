@@ -1,4 +1,4 @@
-FROM node:20-slim AS builder
+FROM node:lts-slim AS builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:20-slim
+FROM node:lts-slim
 
 WORKDIR /usr/src/app
 
@@ -22,6 +22,10 @@ RUN npm ci --omit=dev \
 COPY --chown=node:node --from=builder /app/node_modules ./node_modules
 COPY --chown=node:node --from=builder /app/dist ./dist
 COPY --chown=node:node --from=builder /app/package*.json ./
+COPY --chown=node:node --from=builder /app/prisma ./prisma
+
+RUN apt-get update -y && apt-get install -y openssl \
+  && npx prisma generate
 
 USER node
 
