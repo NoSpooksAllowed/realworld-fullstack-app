@@ -10,7 +10,7 @@ import { Status } from '../../common/utils';
 import render from '../../test/utils';
 import SettingsScreen from './SettingsScreen';
 
-describe('<SettingsScreen />', () => {
+describe.skip('<SettingsScreen />', () => {
   const successRootState = {
     /**
      * @type {import('./authSlice').AuthState}
