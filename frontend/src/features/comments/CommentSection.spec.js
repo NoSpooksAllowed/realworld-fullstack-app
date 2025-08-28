@@ -4,7 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import { createMemoryHistory } from 'history';
 import fetchMock from 'jest-fetch-mock';
 import { Route } from 'react-router-dom';

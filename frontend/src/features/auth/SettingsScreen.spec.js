@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import fetchMock from 'jest-fetch-mock';
 import { createMemoryHistory } from 'history';
 
