@@ -14,5 +14,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Echo test
-        run: echo "Hello world"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install and run backend tests
+        run: |
+          npm ci
+          CI=true npm run test
+        working-directory: ./backend
