@@ -11,6 +11,31 @@ on:
 jobs:
   backend-test:
     runs-on: ubuntu-22.04
+
+    defaults:
+      run:
+        working-directory: ./backend
+
+    env:
+      DATABASE_URL: postgresql://myuser:mypassword@localhost:5432/db
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: myuser
+          POSTGRES_PASSWORD: mypassword
+          POSTGRES_DB: db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,15 +43,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install and run backend tests
+      - name: Install dependencies
+        run: npm ci
+      - name: Run migrations
+        run: npx prisma db push --skip-generate
+      - name: Run unit-tests
+        run: CI=true npm run test
+      - name: Run build
+        run: npm run build
+      - name: Start backend server and run API tests
         run: |
-          npm ci
-          CI=true npm run test
-        working-directory: ./backend
+          npm run start &
+
+          echo "Waiting for backend server to start..."
+          sleep 5 
+
+          # Run API tests
+          ./src/test/postman/run-api-test.sh
+
 
   frontend-test:
     needs: [backend-test]
     runs-on: ubuntu-22.04
+
+    defaults:
+      run:
+        working-directory: ./frontend
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,8 +77,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install and run frontend tests
-        run: |
-          npm ci --ignore-scripts
-          CI=true npm run test
-        working-directory: ./frontend
+      - name: Install Dependencies
+        run: npm ci --ignore-scripts
+      - name: Run tests 
+        run: CI=true npm run test
+      - name: Build 
+        run: npm run build
