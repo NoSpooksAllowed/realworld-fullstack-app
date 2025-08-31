@@ -99,8 +99,8 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/NoSpooksAllowed/realworld-backend-app:latest 
-            ghcr.io/NoSpooksAllowed/realworld-backend-app:${{ github.sha }}
+            ghcr.io/no-spooks-allowed/realworld-backend-app:latest 
+            ghcr.io/no-spooks-allowed/realworld-backend-app:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
 
