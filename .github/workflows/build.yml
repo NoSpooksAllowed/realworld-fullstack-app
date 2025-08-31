@@ -91,6 +91,10 @@ jobs:
             type=raw,value=latest
             type=sha,format=long
 
+      - name: downcase REPO
+        run: |
+          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+
       - name: Build and push backend image
         uses: docker/build-push-action@v6
         with:
@@ -99,8 +103,8 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/${{ github.repository | lower }}/backend:latest 
-            ghcr.io/${{ github.repository | lower }}/backend:${{ github.sha }}
+            ghcr.io/${{ GITHUB_ENV }}/backend:latest 
+            ghcr.io/${{ GITHUB_ENV }}/backend:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
 
