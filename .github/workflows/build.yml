@@ -63,7 +63,6 @@ jobs:
 
 
   frontend-test:
-    needs: [backend-test]
     runs-on: ubuntu-22.04
 
     defaults:
