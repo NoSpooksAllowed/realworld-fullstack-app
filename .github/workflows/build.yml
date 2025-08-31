@@ -99,8 +99,8 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/nospooksalowed/realworld-fullstack-app/backend:latest
-            ghcr.io/nospooksalowed/realworld-fullstack-app/backend:${{ github.sha }}
+            ghcr.io/nospooksalowed/realworld-fullstack-app:backend-latest
+            ghcr.io/nospooksalowed/realworld-fullstack-app:backend-${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
 
