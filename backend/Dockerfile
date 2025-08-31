@@ -8,7 +8,9 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+RUN apt-get update -y && apt-get install -y openssl \
+  && npx prisma generate \
+  && npm run build
 
 FROM node:lts-slim
 
@@ -24,8 +26,7 @@ COPY --chown=node:node --from=builder /app/dist ./dist
 COPY --chown=node:node --from=builder /app/package*.json ./
 COPY --chown=node:node --from=builder /app/prisma ./prisma
 
-RUN apt-get update -y && apt-get install -y openssl \
-  && npx prisma generate
+RUN apt-get update -y && apt-get install -y openssl
 
 USER node
 
