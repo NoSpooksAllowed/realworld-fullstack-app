@@ -48,7 +48,7 @@ jobs:
       - name: Run migrations
         run: npx prisma db push --skip-generate
       - name: Run unit-tests
-        run: CI=true npm run test
+        run: CI=true npm run test:ci
       - name: Run build
         run: npm run build
       - name: Start backend server and run API tests
