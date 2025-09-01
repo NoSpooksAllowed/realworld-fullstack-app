@@ -2,14 +2,14 @@ version: "3.9"
 
 services:
   frontend:
-    image: nomadxynta/real_word_frontend:latest
+    image: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
     depends_on:
       - backend
       - postgres_db
     ports:
       - "80:8080"
   backend:
-    image: nomadxynta/real_word_backend:latest
+    image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
     env_file: 
       - ./backend/.env
     depends_on:
@@ -17,7 +17,7 @@ services:
         condition: service_completed_successfully
 
   migrate:
-    image: nomadxynta/real_word_backend:latest
+    image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
     env_file:
       - ./backend/.env
     depends_on:
