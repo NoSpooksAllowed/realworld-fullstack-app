@@ -98,6 +98,7 @@ jobs:
           file: ./backend/Dockerfile
           platforms: linux/amd64
           push: true
+          no-cache: true
           tags: |
             ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
             ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
@@ -163,6 +164,7 @@ jobs:
           file: ./frontend/Dockerfile
           platforms: linux/amd64
           push: true
+          no-cache: true
           tags: |
             ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
             ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}
