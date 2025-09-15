@@ -29,6 +29,10 @@ app.get("/", function (_req, res) {
   return res.send("This is just the backend for RealWorld");
 });
 
+app.get("/api/version", function (_req, res) {
+  return res.send("Version 1");
+});
+
 app.use(authErrorHandler, prismaErrorHandler, generalErrorHandler);
 
 export default app;
