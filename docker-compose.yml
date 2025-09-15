@@ -1,13 +1,71 @@
 version: "3.9"
 
 services:
+  traefik:
+    image: traefik:v3.5
+    security_opt:
+      - no-new-privileges:true
+
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+    command:
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
+      - "--certificatesresolvers.le.acme.email=goryachevv201@gmail.com"
+      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=realworld-fullstack-app_default"
+
+      - "--api.dashboard=true"
+      - "--api.insecure=false"
+
+      - "--log.level=INFO"
+      - "--accesslog=true"
+
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.dashboard.rule=Host(`dashboard.mydevopsjourney.fun`)"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.tls=true"
+      - "traefik.http.routers.dashboard.tls.certresolver=le"
+
+      - "traefik.http.middlewares.dashboard-auth.basicauth.users=${TRAEFIK_DASHBOARD_AUTH}"
+      - "traefik.http.routers.dashboard.middlewares=dashboard-auth@docker"
+    depends_on:
+      - frontend
+
+
   frontend:
     image: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
     depends_on:
       - backend
       - postgres_db
-    ports:
-      - "80:8080"
+    expose:
+      - "8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.tls.certresolver=le"
+      - "traefik.http.routers.frontend.rule=Host(`mydevopsjourney.fun`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.services.frontend.loadbalancer.server.port=8080"
+
+
   backend:
     image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
     env_file: 
