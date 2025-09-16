@@ -184,4 +184,6 @@ jobs:
           script: |
             cd ${{ secrets.PROJECT_PATH }}
             docker compose pull
-            docker compose up -d
+            docker compose run migrate
+            docker rollout backend 
+            docker rollout frontend
