@@ -30,7 +30,7 @@ app.get("/", function (_req, res) {
 });
 
 app.get("/api/version", function (_req, res) {
-  return res.send("Version 2");
+  return res.send("Version 3");
 });
 
 app.use(authErrorHandler, prismaErrorHandler, generalErrorHandler);
