@@ -183,7 +183,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.PROJECT_PATH }}
-            docker compose pull
+            docker pull ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
+            docker pull ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}
             docker compose run migrate
             docker rollout backend 
             docker rollout frontend
