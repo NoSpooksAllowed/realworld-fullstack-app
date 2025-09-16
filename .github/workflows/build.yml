@@ -183,8 +183,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.PROJECT_PATH }}
-            docker pull ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
+            sed -i 's|^FRONTEND_IMAGE_TAG=.*|FRONTEND_IMAGE_TAG=ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}|' .env
+            sed -i 's|^BACKEND_IMAGE_TAG=.*|BACKEND_IMAGE_TAG=ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}|' .env
             docker pull ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}
+            docker pull ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
             docker compose run migrate
             docker rollout backend 
             docker rollout frontend
