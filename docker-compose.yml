@@ -51,7 +51,7 @@ services:
 
 
   frontend:
-    image: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
+    image: ${FRONTEND_IMAGE_TAG}
     depends_on:
       - backend
       - postgres_db
@@ -67,7 +67,7 @@ services:
 
 
   backend:
-    image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
+    image: ${BACKEND_IMAGE_TAG}
     env_file: 
       - ./backend/.env
     depends_on:
@@ -75,7 +75,7 @@ services:
         condition: service_completed_successfully
 
   migrate:
-    image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
+    image: ${BACKEND_IMAGE_TAG}
     env_file:
       - ./backend/.env
     depends_on:
