@@ -143,7 +143,7 @@ function ProfileTabs({ username, isFavorites }) {
         <li className="nav-item">
           <Link
             className={isFavorites ? 'nav-link' : 'nav-link active'}
-            to={`/@${username}`}
+            to={`/profile/${username}`}
           >
             My Articles
           </Link>
@@ -152,7 +152,7 @@ function ProfileTabs({ username, isFavorites }) {
         <li className="nav-item">
           <Link
             className={isFavorites ? 'nav-link active' : 'nav-link'}
-            to={`/@${username}/favorites`}
+            to={`/profile/${username}/favorites`}
           >
             Favorited Articles
           </Link>
@@ -164,16 +164,19 @@ function ProfileTabs({ username, isFavorites }) {
 
 /**
  * Profile screen component
- * @param {import('react-router-dom').RouteComponentProps<{ username: string }>} props
+ * @param {Object} props
+ * @param {boolean} props.isFavoritePage
  * @example
  * <Profile />
  */
-function Profile({ location, isFavoritePage }) {
+function Profile({ isFavoritePage }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const { username } = useParams();
 
   useEffect(() => {
+    if (!username) return;
+    
     const fetchProfile = dispatch(getProfile(username));
     const fetchArticles = dispatch(
       isFavoritePage
@@ -189,6 +192,7 @@ function Profile({ location, isFavoritePage }) {
 
   useEffect(() => () => dispatch(profilePageUnloaded()), []);
 
+  // This code always true, this is why I got empty html page on profiles
   if (!profile) {
     return null;
   }

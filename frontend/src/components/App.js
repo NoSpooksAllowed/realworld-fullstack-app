@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from '../components/Home';
+import Profile from '../components/Profile';
 import { appLoad, clearRedirect } from '../reducers/common';
 import Header from './Header';
 
@@ -21,11 +22,7 @@ const AuthScreen = lazy(() =>
     /* webpackChunkName: "AuthScreen", webpackPrefetch: true  */ '../features/auth/AuthScreen'
   )
 );
-const Profile = lazy(() =>
-  import(
-    /* webpackChunkName: "Profile", webpackPrefetch: true  */ '../components/Profile'
-  )
-);
+
 const SettingsScreen = lazy(() =>
   import(
     /* webpackChunkName: "SettingsScreen", webpackPrefetch: true  */ '../features/auth/SettingsScreen'
@@ -62,11 +59,16 @@ function App() {
             <Route path="/editor" element={<Editor />} />
             <Route path="/article/:slug" element={<Article />} />
             <Route path="/settings" element={<SettingsScreen />} />
+            <Route path="/test-profile" element={<Profile />} />
+            <Route path="/profile/:username" element={<Profile />} />
             <Route
-              path="/@:username/favorites"
+              path="/profile/:username/favorites"
               element={<Profile isFavoritePage />}
             />
-            <Route path="/@:username" element={<Profile />} />
+            <Route
+              path="/*"
+              element={<div>No route matched: {window.location.pathname}</div>}
+            />
           </Routes>
         </Suspense>
       </>
