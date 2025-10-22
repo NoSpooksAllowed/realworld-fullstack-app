@@ -182,6 +182,14 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            FRONTEND_IMAGE_TAG=ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}
+            BACKEND_IMAGE_TAG=ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
+
             cd ${{ secrets.PROJECT_PATH }}
+            
+            sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" templates/backend/deployment.yaml > base/backend/deployment.yaml
+            sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" templates/backend/job.yaml > base/backend/job.yaml
+            sed "s|\${FRONTEND_IMAGE_TAG}|${FRONTEND_IMAGE_TAG}|g" templates/frontend/deployment.yaml > base/frontend/deployment.yaml
+
             chmod +x scripts/deploy.sh
             ./scripts/deploy.sh
