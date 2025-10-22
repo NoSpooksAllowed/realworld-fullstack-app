@@ -4,6 +4,7 @@ metadata:
   name: backend-migrate
   namespace: realworld-app
 spec:
+  ttlSecondsAfterFinished: 100
   template:
     spec:
       restartPolicy: OnFailure
