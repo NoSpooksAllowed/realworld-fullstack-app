@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backend-migrate
+  namespace: realworld-app
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
+          imagePullPolicy: Always # TODO: Replace it later with particular image substitution
+          command: ["npm", "run", "migrate:prod"]
+          envFrom:
+            - secretRef:
+                name: backend-secrets

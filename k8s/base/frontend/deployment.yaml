@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dep
+  namespace: realworld-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend-container
+          image: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
+          imagePullPolicy: Always # TODO: Replace it later with particular image substitution

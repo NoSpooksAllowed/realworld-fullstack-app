@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+  namespace: realworld-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
+          imagePullPolicy: Always # TODO: Replace it later with particular image substitution
+          envFrom:
+            - secretRef:
+                name: backend-secrets
