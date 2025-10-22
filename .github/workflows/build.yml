@@ -187,9 +187,9 @@ jobs:
 
             cd ${{ secrets.PROJECT_PATH }}
             
-            sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" templates/backend/deployment.yaml > base/backend/deployment.yaml
-            sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" templates/backend/job.yaml > base/backend/job.yaml
-            sed "s|\${FRONTEND_IMAGE_TAG}|${FRONTEND_IMAGE_TAG}|g" templates/frontend/deployment.yaml > base/frontend/deployment.yaml
+            sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" base/backend/deployment.yaml
+            sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" base/backend/job.yaml
+            sed "s|\${FRONTEND_IMAGE_TAG}|${FRONTEND_IMAGE_TAG}|g"  base/frontend/deployment.yaml
 
             chmod +x scripts/deploy.sh
             ./scripts/deploy.sh

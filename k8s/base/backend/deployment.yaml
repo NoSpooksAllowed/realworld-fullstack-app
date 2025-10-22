@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
         - name: backend-container
-          image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
-          imagePullPolicy: Always # TODO: Replace it later with particular image substitution
+          image: ${BACKEND_IMAGE_TAG}
           envFrom:
             - secretRef:
                 name: backend-secrets

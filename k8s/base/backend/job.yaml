@@ -10,8 +10,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: migrate
-          image: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
-          imagePullPolicy: Always # TODO: Replace it later with particular image substitution
+          image: ${BACKEND_IMAGE_TAG}
           command: ["npm", "run", "migrate:prod"]
           envFrom:
             - secretRef:

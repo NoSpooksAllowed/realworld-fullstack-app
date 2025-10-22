@@ -15,5 +15,4 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
-          imagePullPolicy: Always # TODO: Replace it later with particular image substitution
+          image: ${FRONTEND_IMAGE_TAG}
