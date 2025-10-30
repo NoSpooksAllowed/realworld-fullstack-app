@@ -1,0 +1,41 @@
+# Global settings
+namespace: realworld-app
+replicaCount: 1
+
+backend:
+  image:
+    repository: ghcr.io/nospooksallowed/realworld-fullstack-app    
+    tag: backend-50e7445464a51912ebbc71eb3596a480ffc6e1dd
+  service:
+    type: ClusterIP
+    port: 3000
+    targetPort: 3000
+
+
+frontend:
+  image:
+    repository: ghcr.io/nospooksallowed/realworld-fullstack-app
+    tag: frontend-50e7445464a51912ebbc71eb3596a480ffc6e1dd
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 8080
+
+
+postgres:
+  image:
+    repository: postgres
+    tag: 18
+  service:
+    port: 5432
+    targetPort: 5432
+
+ingress:
+  enabled: true
+  className: traefik
+  host: mydevopsjourney.fun
+
+secrets:
+  backend:
+    DATABASE_URL: cG9zdGdyZXNxbDovL215dXNlcjpteXBhc3N3b3JkQHBvc3RncmVzOjU0MzIvZGIK 
+    JWT_SECRET: WlpUWG5KVnZNYnNXR0FNVmJEQXg2K0Y5YjBlSTZYdUMvcFVIelN4QnRPV3RnaDh3cG9MQWlET1RyV3VXQWF6bVV0Z2RXeXh3alIzakIzODRvYkVXa0E9PQo=
