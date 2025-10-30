@@ -177,23 +177,24 @@ jobs:
     steps:
       - name: Package Helm chart
         run: |
-          helm package ./k8s/realworld-app-chart
-          mv realworld-app-chart-*.tgz realworld-app-chart.tgz
-
-      - name: Copy chart to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "realworld-app-chart.tgz"
-          target: "/tmp/"
-
-      - name: Deploy to VPS via SSH
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            ls /tmp # Test if chart archive saved successfully
+          pwd
+          # helm package ./k8s/realworld-app-chart
+          # mv realworld-app-chart-*.tgz realworld-app-chart.tgz
+          #
+      # - name: Copy chart to server
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.VPS_HOST }}
+      #     username: ${{ secrets.VPS_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     source: "realworld-app-chart.tgz"
+      #     target: "/tmp/"
+      #
+      # - name: Deploy to VPS via SSH
+      #   uses: appleboy/ssh-action@v0.1.10
+      #   with:
+      #     host: ${{ secrets.VPS_HOST }}
+      #     username: ${{ secrets.VPS_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       ls /tmp # Test if chart archive saved successfully
