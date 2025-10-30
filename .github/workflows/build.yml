@@ -177,8 +177,7 @@ jobs:
     steps:
       - name: Package Helm chart
         run: |
-          cd ${{ vars.PROJECT_PATH }}
-          helm package ./realworld-app-chart
+          helm package ./k8s/realworld-app-chart
           mv realworld-app-chart-*.tgz realworld-app-chart.tgz
 
       - name: Copy chart to server
