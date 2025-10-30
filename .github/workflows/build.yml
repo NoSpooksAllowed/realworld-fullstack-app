@@ -175,24 +175,25 @@ jobs:
     needs: [build-and-publish-docker-frontend, build-and-publish-docker-backend]
 
     steps:
+      - name: Package Helm chart
+        run: |
+          helm package ./realworld-app-chart
+          mv realworld-app-chart-*.tgz realworld-app-chart.tgz
 
-      - name: Check helm version
-        run: helm version
-      # - name: Deploy to VPS via SSH
-      #   uses: appleboy/ssh-action@v0.1.10
-      #   with:
-      #     host: ${{ secrets.VPS_HOST }}
-      #     username: ${{ secrets.VPS_USER }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     script: |
-      #       FRONTEND_IMAGE_TAG=ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}
-      #       BACKEND_IMAGE_TAG=ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
-      #
-      #       cd ${{ secrets.PROJECT_PATH }}
-      #
-      #       sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" templates/backend/deployment.yaml > base/backend/deployment.yaml
-      #       sed "s|\${BACKEND_IMAGE_TAG}|${BACKEND_IMAGE_TAG}|g" templates/backend/job.yaml > base/backend/job.yaml
-      #       sed "s|\${FRONTEND_IMAGE_TAG}|${FRONTEND_IMAGE_TAG}|g" templates/frontend/deployment.yaml > base/frontend/deployment.yaml
-      #
-      #       chmod +x scripts/deploy.sh
-      #       ./scripts/deploy.sh
+      - name: Copy chart to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "realworld-app-chart.tgz"
+          target: "/tmp/"
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            ls /tmp # Test if chart archive saved successfully
