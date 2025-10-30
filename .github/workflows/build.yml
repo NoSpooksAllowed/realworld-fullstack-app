@@ -178,6 +178,7 @@ jobs:
       - name: Package Helm chart
         run: |
           pwd
+          ls -1
           # helm package ./k8s/realworld-app-chart
           # mv realworld-app-chart-*.tgz realworld-app-chart.tgz
           #
