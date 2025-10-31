@@ -199,4 +199,12 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            ls /tmp # Test if chart archive saved successfully
+            helm upgrade --install realworld-app /tmp/realworld-app-chart.tgz \
+              --namespace realworld-app \
+              --create-namespace \
+              --set backend.image.tag=backend-${{ github.sha }} \
+              --set frontend.image.tag=frontend-${{ github.sha }} \
+              --wait \
+              --timeout 5m
+            
+            rm -f /tmp/realworld-app-chart.tgz
