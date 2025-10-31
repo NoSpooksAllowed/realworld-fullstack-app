@@ -175,13 +175,14 @@ jobs:
     needs: [build-and-publish-docker-frontend, build-and-publish-docker-backend]
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Package Helm chart
         run: |
-          pwd
-          ls -1
-          # helm package ./k8s/realworld-app-chart
-          # mv realworld-app-chart-*.tgz realworld-app-chart.tgz
-          #
+          helm package ./k8s/realworld-app-chart
+          mv realworld-app-chart-*.tgz realworld-app-chart.tgz
+
       # - name: Copy chart to server
       #   uses: appleboy/scp-action@master
       #   with:
