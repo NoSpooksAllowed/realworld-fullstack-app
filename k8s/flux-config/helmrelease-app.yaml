@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: realworld-app
+  namespace: realworld-app
+spec:
+  interval: 3m
+  chart:
+    spec:
+      chart: ./k8s/realworld-app-chart
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 3m
+  values:
+    replicaCount: 2
