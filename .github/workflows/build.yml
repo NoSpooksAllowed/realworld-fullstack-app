@@ -101,7 +101,7 @@ jobs:
           no-cache: true
           tags: |
             ghcr.io/nospooksallowed/realworld-fullstack-app:backend-latest
-            ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}
+            ghcr.io/nospooksallowed/realworld-fullstack-app:backend-${{ github.sha }}-${{ github.run_number }}
           labels: ${{ steps.meta.outputs.labels }}
 
 
@@ -167,7 +167,7 @@ jobs:
           no-cache: true
           tags: |
             ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-latest
-            ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}
+            ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-${{ github.sha }}-${{ github.run_number }}
           labels: ${{ steps.meta.outputs.labels }}
 
   # deploy:
