@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./clusters/realworld-cluster
+  path: ./k8s/clusters/realworld-cluster
   prune: true
   sourceRef:
     kind: GitRepository
