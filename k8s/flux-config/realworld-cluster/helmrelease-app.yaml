@@ -18,4 +18,4 @@ spec:
     backend:
       tag: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-2a806dce3473c9d82fc48ad9fe418b5df8216d32-78 # {"$imagepolicy": "flux-system:backend-policy"}
     frontend:
-      tag: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-1144a2635ea433dc9baa7b4420e9f011c3961065-79 # {"$imagepolicy": "flux-system:frontend-policy"}
+      tag: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-9057b053572a025bfc0a1c1cfa4970134a05ad44-80 # {"$imagepolicy": "flux-system:frontend-policy"}
