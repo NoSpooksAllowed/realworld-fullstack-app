@@ -7,7 +7,7 @@ spec:
   imageRepositoryRef:
     name: realworld-app-images  
   filterTags:
-    pattern: '^backend-[a-f0-9]+-(?P<run>[0-9]+)$'
+    pattern: '^backend-[a-f0-9]+-(?P<run>[0-9]+)'
     extract: '$run'
   policy:
     numerical:
