@@ -15,9 +15,7 @@ spec:
       interval: 3m
   values:
     replicaCount: 1
-
     backend:
-      tag: backend-latest # {"$imagepolicy": "flux-system:backend-policy"}
-
+      tag: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-2a806dce3473c9d82fc48ad9fe418b5df8216d32-78 # {"$imagepolicy": "flux-system:backend-policy"}
     frontend:
-      tag: frontend-latest # {"$imagepolicy": "flux-system:frontend-policy"}
+      tag: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-2a806dce3473c9d82fc48ad9fe418b5df8216d32-78 # {"$imagepolicy": "flux-system:frontend-policy"}
