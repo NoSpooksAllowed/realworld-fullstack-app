@@ -17,7 +17,7 @@ spec:
     replicaCount: 1
     backend:
       image:
-        tag: ghcr.io/nospooksallowed/realworld-fullstack-app:backend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:backend-policy:tag"}
+        tag: backend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:backend-policy:tag"}
     frontend:
       image:
-        tag: ghcr.io/nospooksallowed/realworld-fullstack-app:frontend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
+        tag: frontend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
