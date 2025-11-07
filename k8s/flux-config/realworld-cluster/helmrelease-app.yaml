@@ -14,7 +14,7 @@ spec:
         namespace: flux-system
       interval: 3m
   values:
-    replicaCount: 1
+    replicaCount: 2
     backend:
       image:
         tag: backend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:backend-policy:tag"}
