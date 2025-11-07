@@ -20,4 +20,4 @@ spec:
         tag: backend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:backend-policy:tag"}
     frontend:
       image:
-        tag: frontend-e7e470f61ef050279f2ca85f8bf7d75df4eb2c74-89 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
+        tag: frontend-1c930e8e80da96391d17cb1198765f6568f291b9-90 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
