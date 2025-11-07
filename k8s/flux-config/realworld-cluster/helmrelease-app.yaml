@@ -15,3 +15,9 @@ spec:
       interval: 3m
   values:
     replicaCount: 1
+
+    backend:
+      tag: backend-latest # {"$imagepolicy": "flux-system:backend-policy"}
+
+    frontend:
+      tag: frontend-latest # {"$imagepolicy": "flux-system:frontend-policy"}
