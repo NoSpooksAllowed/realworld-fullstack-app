@@ -4,7 +4,7 @@ metadata:
   name: realworld-app
   namespace: realworld-app
 spec:
-  interval: 3m
+  interval: 10m
   chart:
     spec:
       chart: ./k8s/realworld-app-chart
@@ -12,9 +12,9 @@ spec:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
-      interval: 3m
+      interval: 10m
   values:
-    replicaCount: 2
+    replicaCount: 3
     backend:
       image:
         tag: backend-1c930e8e80da96391d17cb1198765f6568f291b9-90 # {"$imagepolicy": "flux-system:backend-policy:tag"}
