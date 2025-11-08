@@ -21,3 +21,7 @@ spec:
     frontend:
       image:
         tag: frontend-f4a4f77246ce78ace78a32b8f7e84067f0764426-92 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
+  valuesFrom:
+    - kind: Secret
+      name: backend-secrets-values
+      valuesKey: values.yaml
