@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'k8s/flux-config/**'
+      - 'k8s/**'
   pull_request:
     branches:
       - main
