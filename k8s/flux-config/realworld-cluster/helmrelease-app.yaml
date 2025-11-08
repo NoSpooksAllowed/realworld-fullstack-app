@@ -17,7 +17,7 @@ spec:
     replicaCount: 1
     backend:
       image:
-        tag: backend-6053e848168527f6bd6ed4aedfd3d93d78685bb1-91 # {"$imagepolicy": "flux-system:backend-policy:tag"}
+        tag: backend-f4a4f77246ce78ace78a32b8f7e84067f0764426-92 # {"$imagepolicy": "flux-system:backend-policy:tag"}
     frontend:
       image:
         tag: frontend-f4a4f77246ce78ace78a32b8f7e84067f0764426-92 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
