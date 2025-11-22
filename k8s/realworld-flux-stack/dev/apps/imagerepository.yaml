@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: realworld-app-images
+  namespace: flux-system
+spec:
+  image: ghcr.io/nospooksallowed/realworld-fullstack-app
+  interval: 5m
