@@ -20,22 +20,3 @@ frontend:
     type: ClusterIP
     port: 80
     targetPort: 8080
-
-
-postgres:
-  image:
-    repository: postgres
-    tag: 18
-  service:
-    port: 5432
-    targetPort: 5432
-
-ingress:
-  enabled: true
-  className: traefik
-  host: mydevopsjourney.fun
-
-secrets:
-  backend:
-    DATABASE_URL: ""
-    JWT_SECRET: ""
