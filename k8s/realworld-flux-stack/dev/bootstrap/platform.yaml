@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./realworld-flux-stack/dev/platform
+  path: ./k8s/realworld-flux-stack/dev/platform
   prune: false
   sourceRef:
     kind: GitRepository
