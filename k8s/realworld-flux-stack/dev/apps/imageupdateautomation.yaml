@@ -20,5 +20,5 @@ spec:
     push:
       branch: main
   update:
-    path: ./k8s/flux-config/realworld-cluster
+    path: ./k8s/realworld-apps-stack/dev
     strategy: Setters
