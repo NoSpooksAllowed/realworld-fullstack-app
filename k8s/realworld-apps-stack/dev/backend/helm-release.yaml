@@ -7,14 +7,18 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: ./k8s/realworld-app-chart
+      chart: ./k8s/charts/realworld-app
       sourceRef:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
       interval: 10m
   values:
+    global:
+      envSecretNames:
+        - "backend-secrets"
     replicaCount: 3
     backend:
       image:
-        tag: backend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93
+        tag: backend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 # {"$imagepolicy": "flux-system:backend-policy:tag"}
+

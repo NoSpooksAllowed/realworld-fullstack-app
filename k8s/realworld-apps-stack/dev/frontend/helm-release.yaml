@@ -7,7 +7,7 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: ./k8s/realworld-app-chart
+      chart: ./k8s/charts/realworld-app
       sourceRef:
         kind: GitRepository
         name: flux-system
@@ -17,4 +17,4 @@ spec:
     replicaCount: 3
     frontend:
       image:
-        tag: frontend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 
+        tag: frontend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 # {"$imagepolicy": "flux-system:frontend-policy:tag"} 

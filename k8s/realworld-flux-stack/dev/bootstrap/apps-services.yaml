@@ -1,0 +1,19 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-services
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./k8s/realworld-apps-stack/dev
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: platform
+    - name: apps-common
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
