@@ -18,6 +18,7 @@ spec:
       envSecretNames:
         - "backend-secrets"
     replicaCount: 1
+    enabled: true
     backend:
       image:
         tag: backend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 # {"$imagepolicy": "flux-system:backend-policy:tag"}
