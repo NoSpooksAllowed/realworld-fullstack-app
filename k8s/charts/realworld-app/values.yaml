@@ -3,16 +3,17 @@ namespace: realworld-app
 replicaCount: 1
 
 backend:
+  enabled: false # Default, set to true in HelmRelease to apply only required services
   image:
-    repository: ghcr.io/nospooksallowed/realworld-fullstack-app    
+    repository: ghcr.io/nospooksallowed/realworld-fullstack-app
     tag: backend-50e7445464a51912ebbc71eb3596a480ffc6e1dd
   service:
     type: ClusterIP
     port: 3000
     targetPort: 3000
 
-
 frontend:
+  enabled: false
   image:
     repository: ghcr.io/nospooksallowed/realworld-fullstack-app
     tag: frontend-50e7445464a51912ebbc71eb3596a480ffc6e1dd

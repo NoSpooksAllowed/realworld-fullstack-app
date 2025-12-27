@@ -1,3 +1,4 @@
+{{- if .Values.frontend.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,3 +25,4 @@ spec:
       containers:
         - name: frontend-container
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+{{- end }}
