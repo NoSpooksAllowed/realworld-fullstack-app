@@ -18,6 +18,9 @@ spec:
       envSecretNames:
         - "backend-secrets"
     replicaCount: 2
-    backend:
+    deployment:
       image:
+        repository: ghcr.io/nospooksallowed/realworld-fullstack-app
         tag: backend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 # {"$imagepolicy": "flux-system:backend-policy:tag"}
+      port: 3000
+      targetPort: 3000
