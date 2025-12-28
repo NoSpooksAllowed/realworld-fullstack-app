@@ -8,6 +8,7 @@ spec:
   chart:
     spec:
       chart: ./k8s/charts/realworld-app
+      version: "0.2.1"
       sourceRef:
         kind: GitRepository
         name: flux-system
