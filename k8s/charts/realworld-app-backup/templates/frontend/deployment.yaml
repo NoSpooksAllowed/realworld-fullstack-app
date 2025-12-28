@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dep
+  namespace: { { .Release.Namespace } }
+  labels:
+    app: frontend
+    release: { { .Release.Name } }
+  # annotations:
+  #   "helm.sh/hook": post-install,post-upgrade
+  #   "helm.sh/hook-weight": "5"
+  #   "helm.sh/hook-delete-policy": post-delete
+spec:
+  replicas: { { .Values.replicaCount } }
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+        release: { { .Release.Name } }
+    spec:
+      containers:
+        - name: frontend-container
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
