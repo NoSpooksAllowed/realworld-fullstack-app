@@ -1,14 +1,13 @@
-{{- if .Values.backend.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-dep
-  namespace: {{ .Release.Namespace }}
+  namespace: { { .Release.Namespace } }
   labels:
     app: backend
-    release: {{ .Release.Name }}
+    release: { { .Release.Name } }
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: { { .Values.replicaCount } }
   selector:
     matchLabels:
       app: backend
@@ -16,7 +15,7 @@ spec:
     metadata:
       labels:
         app: backend
-        release: {{ .Release.Name }}
+        release: { { .Release.Name } }
     spec:
       containers:
         - name: backend-container
@@ -24,4 +23,3 @@ spec:
           envFrom:
             - secretRef:
                 name: backend-secrets
-{{- end }}
