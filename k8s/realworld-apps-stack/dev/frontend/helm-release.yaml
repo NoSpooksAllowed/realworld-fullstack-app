@@ -16,6 +16,5 @@ spec:
   values:
     replicaCount: 1
     frontend:
-      enabled: true
       image:
         tag: frontend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
