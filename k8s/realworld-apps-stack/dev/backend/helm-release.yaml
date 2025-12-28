@@ -17,6 +17,8 @@ spec:
     global:
       envSecretNames:
         - "backend-secrets"
+    app:
+      name: backend
     replicaCount: 2
     deployment:
       image:
