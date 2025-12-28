@@ -1,23 +1,17 @@
 # Global settings
-namespace: realworld-app
-replicaCount: 1
+global:
+  envSecretNames: []
 
-backend:
-  enabled: false # Default, set to true in HelmRelease to apply only required services
-  image:
-    repository: ghcr.io/nospooksallowed/realworld-fullstack-app
-    tag: backend-50e7445464a51912ebbc71eb3596a480ffc6e1dd
-  service:
-    type: ClusterIP
-    port: 3000
-    targetPort: 3000
+namespace: ""
+replicaCount: null
 
-frontend:
-  enabled: false
+app:
+  name: ""
+
+deployment:
   image:
-    repository: ghcr.io/nospooksallowed/realworld-fullstack-app
-    tag: frontend-50e7445464a51912ebbc71eb3596a480ffc6e1dd
-  service:
-    type: ClusterIP
-    port: 80
-    targetPort: 8080
+    repository: ""
+    tag: ""
+  type: ClusterIP
+  port: null
+  targetPort: null
