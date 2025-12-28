@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { { .Release.Name } }
-  namespace: { { .Release.Namespace } }
+  name: "{{ .Release.Name }}"
+  namespace: "{{ .Release.Namespace }}"
   labels:
-    app: { { .Values.app.name } }
-    release: { { .Release.Name } }
+    app: "{{ .Values.app.name }}"
+    release: "{{ .Release.Name }}"
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { { .Values.app.name } }
+      app: "{{ .Values.app.name }}"
   template:
     metadata:
       labels:
-        app: { { .Values.app.name } }
-        release: { { .Release.Name } }
+        app: "{{ .Values.app.name }}"
+        release: "{{ .Release.Name }}"
     spec:
       containers:
-        - name: { { .Values.app.name } }
+        - name: "{{ .Values.app.name }}"
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
           ports:
-            - containerPort: { { .Values.deployment.targetPort } }
+            - containerPort: {{ .Values.deployment.targetPort }}
           {{- if .Values.global.envSecretNames }}
           envFrom:
           {{- range .Values.global.envSecretNames }}
           - secretRef:
-              name: {{ . }}
+              name: "{{ . }}"
           {{- end }}
           {{- end }}
