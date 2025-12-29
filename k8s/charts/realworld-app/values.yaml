@@ -5,6 +5,10 @@ global:
 namespace: ""
 replicaCount: null
 
+job:
+  enabled: false
+  command: []
+
 app:
   name: ""
 

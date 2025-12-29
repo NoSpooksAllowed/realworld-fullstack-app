@@ -1,0 +1,30 @@
+{{- if .Values.job.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Release.Name }}"-migrate
+  namespace: "{{ .Release.Namespace }}"
+  labels:
+    app: "{{ .Values.app.name }}"-migrate
+    release: "{{ .Release.Name }}"
+  annotations:
+    "helm.sh/hook": pre-upgrade,pre-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: migration
+        image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+        command: {{ .Values.job.command }}
+        {{- if .Values.global.envSecretNames }}
+        envFrom:
+        {{- range .Values.global.envSecretNames }}
+        - secretRef:
+            name: "{{ . }}"
+        {{- end }}
+        {{- end }}
+{{- end }}
