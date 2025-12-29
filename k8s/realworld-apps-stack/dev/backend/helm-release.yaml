@@ -18,6 +18,9 @@ spec:
     global:
       envSecretNames:
         - "backend-secrets"
+    job:
+      enabled: true
+      command: ["npm", "run", "migrate:prod"]
     app:
       name: backend
     replicaCount: 2
