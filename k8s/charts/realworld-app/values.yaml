@@ -5,9 +5,8 @@ global:
 namespace: ""
 replicaCount: null
 
-job:
+migration:
   enabled: false
-  command: []
 
 app:
   name: ""

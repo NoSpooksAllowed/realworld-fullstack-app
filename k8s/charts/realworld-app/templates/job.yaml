@@ -1,4 +1,4 @@
-{{- if .Values.job.enabled }}
+{{- if .Values.migration.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -17,9 +17,9 @@ spec:
     spec:
       restartPolicy: OnFailure
       containers:
-      - name: migration
+      - name: "{{ .Values.app.name }}-migrate" 
         image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
-        command: {{ .Values.job.command }}
+        command: ["npm", "run", "migrate:prod"]
         {{- if .Values.global.envSecretNames }}
         envFrom:
         {{- range .Values.global.envSecretNames }}
