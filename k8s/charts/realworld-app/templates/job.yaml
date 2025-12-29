@@ -2,10 +2,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Release.Name }}"-migrate
+  name: "{{ .Release.Name }}-migrate"
   namespace: "{{ .Release.Namespace }}"
   labels:
-    app: "{{ .Values.app.name }}"-migrate
+    app: "{{ .Values.app.name }}-migrate"
     release: "{{ .Release.Name }}"
   annotations:
     "helm.sh/hook": pre-upgrade,pre-install
