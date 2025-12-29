@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: ./k8s/charts/realworld-app
-      version: "0.2.3"
+      version: "0.2.4"
       sourceRef:
         kind: GitRepository
         name: flux-system
@@ -18,9 +18,8 @@ spec:
     global:
       envSecretNames:
         - "backend-secrets"
-    job:
+    migration:
       enabled: true
-      command: ["npm", "run", "migrate:prod"]
     app:
       name: backend
     replicaCount: 2
