@@ -1,0 +1,16 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+  namespace: realworld-app
+spec:
+  instances: 1
+  storage:
+    size: 2Gi
+    storageClass: standard
+  bootstrap:
+    initdb:
+      database: db
+      owner: myuser
+      secret:
+        name: postgres-secret
