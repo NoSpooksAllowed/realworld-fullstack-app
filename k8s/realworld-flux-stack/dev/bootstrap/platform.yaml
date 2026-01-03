@@ -4,6 +4,8 @@ metadata:
   name: platform
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cnpg-operator
   interval: 10m0s
   path: ./k8s/realworld-flux-stack/dev/platform
   prune: false
