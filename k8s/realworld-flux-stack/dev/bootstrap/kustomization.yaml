@@ -5,4 +5,5 @@ resources:
   - platform.yaml
   - apps-common.yaml
   - apps-services.yaml
-  - traefik-bootstrap.yaml 
+  - traefik-bootstrap.yaml
+  - cloudnative-pg-operator.yaml
