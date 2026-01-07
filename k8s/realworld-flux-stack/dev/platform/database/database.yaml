@@ -18,8 +18,9 @@ spec:
     barmanObjectStore:
       destinationPath: gs://cnpg-backups-realworld-app-483521/
       googleCredentials:
-        name: gcp-storage-secret
-        key: credentials.json
+        applicationCredentials:
+          name: gcp-storage-secret
+          key: credentials.json
 
       wal:
         compression: gzip
