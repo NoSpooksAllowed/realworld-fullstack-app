@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - database.yaml
   - secret.enc.yaml
+  - gcp-storage-secret.enc.yaml
