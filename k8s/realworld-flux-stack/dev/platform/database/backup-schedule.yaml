@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: realworld-db-daily-backup
+  namespace: realworld-app
+spec:
+  schedule: "0 0 * * *" # Everyday at 00:00
+  backupOwnerReference: self
+  cluster:
+    name: postgres

@@ -13,3 +13,20 @@ spec:
       owner: myuser
       secret:
         name: postgres-secret
+
+  backup:
+    barmanObjectStore:
+      destinationPath: gs://cnpg-backups-realworld-app-483521/
+      googleCredentials:
+        name: gcp-storage-secret
+        key: credentials.json
+
+      wal:
+        compression: gzip
+        maxParallel: 8
+
+      data:
+        compression: gzip
+        jobs: 4
+
+    retentionPolicy: "30d"
