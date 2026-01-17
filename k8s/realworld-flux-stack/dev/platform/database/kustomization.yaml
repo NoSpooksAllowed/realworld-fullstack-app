@@ -5,3 +5,4 @@ resources:
   - secret.enc.yaml
   - gcp-storage-secret.enc.yaml
   - backup-schedule.yaml
+  - podmonitor.yaml
