@@ -17,6 +17,7 @@ spec:
   values:
     prometheus:
       prometheusSpec:
+        podMonitorNamespaceSelector: {}
         resources:
           requests:
             memory: 400Mi
