@@ -53,6 +53,19 @@ spec:
         userKey: user
         passwordKey: password
 
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+            - name: "cloudnativepg"
+              orgId: 1
+              folder: "PostgreSQL"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/default
+
       dashboards:
         default:
           cloudnativepg:
