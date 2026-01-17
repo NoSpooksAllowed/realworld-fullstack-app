@@ -7,7 +7,7 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:18.1-system-trixie@sha256:1fdc62057f9ce3b635fbbf42f35ff0edc8781621ebc82edb7d75508991bb9b06
 
   monitoring:
-    enablePodMonitor: true
+    enablePodMonitor: false
 
   instances: 1
   storage:
