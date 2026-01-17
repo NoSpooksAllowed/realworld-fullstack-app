@@ -1,25 +1,24 @@
-# 2-app-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mydevopsjourney-ingress
   namespace: realworld-app
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod 
-    
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
 
     ingress.kubernetes.io/ssl-redirect: "true"
 
     traefik.ingress.kubernetes.io/router.middlewares: realworld-app-security-headers@kubernetescrd
-    
+
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
         - mydevopsjourney.fun
-      secretName: mydevopsjourney-fun-tls 
+      secretName: mydevopsjourney-fun-tls
   rules:
     - host: mydevopsjourney.fun
       http:
@@ -28,6 +27,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: frontend                 
+                name: frontend
                 port:
                   number: 80
