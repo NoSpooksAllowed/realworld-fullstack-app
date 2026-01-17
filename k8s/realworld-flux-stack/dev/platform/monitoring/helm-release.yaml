@@ -52,3 +52,10 @@ spec:
         existingSecret: "grafana-credentials"
         userKey: user
         passwordKey: password
+
+      dashboards:
+        default:
+          cloudnativepg:
+            gnetId: 20417
+            revision: 4
+            datasource: Prometheus
