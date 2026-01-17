@@ -22,14 +22,15 @@ spec:
             memory: 400Mi
           limits:
             memory: 800Mi
-        retention: 5d
+        retention: 24h
         storageSpec:
-          v1:
-            patch:
-              spec:
-                resources:
-                  requests:
-                    storage: 5Gi
+          volumeClaimTemplate:
+            spec:
+              storageClassName: "local-path"
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 3Gi
     grafana:
       admin:
         existingSecret: "grafana-credentials"
