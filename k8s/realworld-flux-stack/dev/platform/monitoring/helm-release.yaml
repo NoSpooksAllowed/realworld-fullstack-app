@@ -15,8 +15,21 @@ spec:
         namespace: flux-system
   interval: 1h
   values:
+    commonLabels:
+      observability: enabled
     prometheus:
       prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+
+        serviceMonitorSelector:
+          matchLabels:
+            observability: enabled
+
+        podMonitorSelector:
+          matchLabels:
+            observability: enabled
+
         resources:
           requests:
             memory: 400Mi
