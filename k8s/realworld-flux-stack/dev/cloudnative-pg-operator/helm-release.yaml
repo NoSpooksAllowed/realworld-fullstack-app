@@ -14,7 +14,3 @@ spec:
         name: cloudnative-pg
         namespace: flux-system
       interval: 12h
-  install:
-    createNamespace: true
-  upgrade:
-    crds: CreateReplace

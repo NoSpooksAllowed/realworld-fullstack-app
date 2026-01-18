@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cloudnative-pg.yaml
   - helm-release.yaml
+  - namespace.yaml
