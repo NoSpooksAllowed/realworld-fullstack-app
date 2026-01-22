@@ -21,6 +21,6 @@ spec:
     deployment:
       image:
         repository: ghcr.io/nospooksallowed/realworld-fullstack-app
-        tag: frontend-af154d26f436e341a56de6840156b5e8939d1a81-94 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
+        tag: frontend-92bee6222f019b2bd36d61f07a3d6d9fa9bb0823-95 # {"$imagepolicy": "flux-system:frontend-policy:tag"}
       port: 80
       targetPort: 8080
