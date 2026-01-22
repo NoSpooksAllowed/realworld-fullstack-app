@@ -26,6 +26,6 @@ spec:
     deployment:
       image:
         repository: ghcr.io/nospooksallowed/realworld-fullstack-app
-        tag: backend-bf4df8927f9a6404227949ab23a1b33c3c0239c9-93 # {"$imagepolicy": "flux-system:backend-policy:tag"}
+        tag: backend-af154d26f436e341a56de6840156b5e8939d1a81-94 # {"$imagepolicy": "flux-system:backend-policy:tag"}
       port: 3000
       targetPort: 3000
