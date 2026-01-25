@@ -23,5 +23,5 @@ spec:
     kind: GitRepository
     url: "ssh://git@github.com/nospooksallowed/realworld-fullstack-app.git"
     ref: "refs/heads/main"
-    path: "./k8s/realworld-flux-stack/dev/bootstrap"
+    path: "k8s/realworld-flux-stack/dev/bootstrap"
     pullSecret: "flux-system"
