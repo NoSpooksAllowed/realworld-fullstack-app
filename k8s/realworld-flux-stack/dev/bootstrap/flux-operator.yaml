@@ -1,0 +1,12 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-operator
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./k8s/realworld-flux-stack/dev/flux-operator
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
