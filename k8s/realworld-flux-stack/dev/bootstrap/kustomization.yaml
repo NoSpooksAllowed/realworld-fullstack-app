@@ -7,3 +7,5 @@ resources:
   - apps-services.yaml
   - traefik-bootstrap.yaml
   - cloudnative-pg-operator.yaml
+  - flux-instance.yaml
+  - flux-operator.yaml
