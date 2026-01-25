@@ -6,6 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: cnpg-operator
+    - name: flux-operator
   interval: 10m0s
   path: ./k8s/realworld-flux-stack/dev/platform
   prune: false
