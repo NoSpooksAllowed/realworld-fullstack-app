@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./clusters/flux-instance/
+  path: ./k8s/realworld-flux-stack/dev/flux-instance/
   prune: false
   sourceRef:
     kind: GitRepository
