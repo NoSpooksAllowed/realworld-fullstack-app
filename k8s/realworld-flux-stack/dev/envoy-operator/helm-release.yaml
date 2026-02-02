@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: envoy
+  namespace: envoy-system
+spec:
+  interval: 12h
+  chartRef:
+    kind: OCIRepository
+    name: envoy
+  values:
+    crds:
+      gatewayAPI:
+        enabled: true
+        channel: standard
+      envoyGateway:
+        enabled: true
