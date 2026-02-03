@@ -39,11 +39,11 @@ spec:
         retention: 24h
         storageSpec:
           volumeClaimTemplate:
-          spec:
-            storageClassName: "standard"
-            resources:
-              requests:
-                storage: 3Gi
+            spec:
+              storageClassName: "standard-rwo"
+              resources:
+                requests:
+                  storage: 3Gi
     grafana:
       # ingress:
       #   enabled: true
