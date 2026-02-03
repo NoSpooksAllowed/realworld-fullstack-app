@@ -21,6 +21,7 @@ spec:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
 
         serviceMonitorSelector:
           matchLabels:
@@ -38,12 +39,11 @@ spec:
         retention: 24h
         storageSpec:
           volumeClaimTemplate:
-            spec:
-              storageClassName: "local-path"
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 3Gi
+          spec:
+            storageClassName: "standard-rwo"
+            resources:
+              requests:
+                storage: 3Gi
     grafana:
       # ingress:
       #   enabled: true
