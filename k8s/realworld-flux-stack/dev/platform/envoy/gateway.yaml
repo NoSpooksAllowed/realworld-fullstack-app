@@ -20,3 +20,5 @@ spec:
         certificateRefs:
           - kind: Secret
             name: root-tls
+          - kind: Secret
+            name: grafana-tls
