@@ -13,7 +13,6 @@ spec:
       port: 80
 
     - name: https
-      hostname: "mydevopsjourney.fun"
       port: 443
       protocol: HTTPS
       tls:
