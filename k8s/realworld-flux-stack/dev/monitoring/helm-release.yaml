@@ -40,7 +40,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
           spec:
-            storageClassName: "standard-rwo"
+            storageClassName: "standard"
             resources:
               requests:
                 storage: 3Gi
