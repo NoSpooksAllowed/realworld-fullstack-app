@@ -1,18 +1,18 @@
-# apiVersion: cert-manager.io/v1
-# kind: ClusterIssuer
-# metadata:
-#   name: letsencrypt
-#   namespace: cert-manager
-# spec:
-#   acme:
-#     server: https://acme-v02.api.letsencrypt.org/directory
-#     email: goryachevv201@gmail.com
-#     privateKeySecretRef:
-#       name: letsencrypt-key
-#     solvers:
-#       - http01:
-#           gatewayHTTPRoute:
-#             parentRefs:
-#               - kind: Gateway
-#                 name: envoy-gateway
-#                 namespace: envoy-system
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: goryachevv201@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-key
+    solvers:
+      - http01:
+          gatewayHTTPRoute:
+            parentRefs:
+              - kind: Gateway
+                name: envoy-gateway
+                namespace: envoy-system
