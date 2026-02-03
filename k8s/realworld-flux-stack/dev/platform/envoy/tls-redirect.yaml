@@ -8,7 +8,8 @@ spec:
     - name: envoy-gateway
       sectionName: http
   hostnames:
-    - mydevopsjourney.fun # TODO: also add grafana.mydevopsjourney.fun too
+    - mydevopsjourney.fun
+    - grafana.mydevopsjourney.fun
   rules:
     - filters:
         - type: RequestRedirect
