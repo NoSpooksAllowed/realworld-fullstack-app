@@ -4,6 +4,5 @@ resources:
   - envoy-proxy-config.yaml
   - gateway-class.yaml
   - gateway.yaml
-  - route.yaml
   - tls-redirect.yaml
-  - reference-grant.yaml
+  - routes/
