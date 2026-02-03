@@ -14,6 +14,21 @@ spec:
         name: prometheus-community
         namespace: flux-system
   interval: 1h
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: ServiceMonitor
+            patch: |
+              - op: add
+                path: /metadata/labels/observability
+                value: enabled
+          - target:
+              kind: PodMonitor
+            patch: |
+              - op: add
+                path: /metadata/labels/observability
+                value: enabled
   values:
     commonLabels:
       observability: enabled
