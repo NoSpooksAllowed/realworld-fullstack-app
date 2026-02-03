@@ -5,3 +5,20 @@ resources:
   - helm-repository.yaml
   - helm-release.yaml
   - grafana-secret.enc.yaml
+
+patches:
+  - target:
+      kind: ServiceMonitor
+      namespace: monitoring
+    patch: |-
+      - op: add
+        path: /metadata/labels/observability
+        value: enabled
+
+  - target:
+      kind: PodMonitor
+      namespace: monitoring
+    patch: |-
+      - op: add
+        path: /metadata/labels/observability
+        value: enabled
