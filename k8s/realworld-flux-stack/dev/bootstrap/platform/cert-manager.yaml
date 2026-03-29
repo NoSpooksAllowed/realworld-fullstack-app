@@ -7,6 +7,7 @@ spec:
   interval: 10m
   dependsOn:
     - name: database
+    - name: cert-manager-operator
   path: ./k8s/realworld-flux-stack/dev/platform/cert-manager
   prune: false
   sourceRef:
