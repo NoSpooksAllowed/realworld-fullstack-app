@@ -8,3 +8,9 @@ spec:
   url: oci://registry-1.docker.io/nomadxynta/envoy-proxy-gateway-helm-patched
   ref:
     tag: v1.7.1
+
+# Patched the current version of the Envoy Gateway Helm chart because it is not possible to disable
+# the experimental CRDs when using it. Manually deleted the experimental CRDs and pushed
+# the patched version to my Docker Hub registry.
+#
+# See the issue: https://github.com/envoyproxy/gateway/issues/8560
