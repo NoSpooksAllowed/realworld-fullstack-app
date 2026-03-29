@@ -9,5 +9,7 @@ spec:
     kind: OCIRepository
     name: cert-manager
   values:
+    crds:
+      enabled: true
     config:
       enableGatewayAPI: true
