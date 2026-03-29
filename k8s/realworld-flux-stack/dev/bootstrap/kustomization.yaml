@@ -4,9 +4,5 @@ resources:
   - flux-system/
   - apps-common.yaml
   - apps-services.yaml
-  - cloudnative-pg-operator.yaml
-  - monitoring.yaml
-  - flux-operator.yaml
-  - envoy-operator.yaml
-  - cert-manager.yaml
-  - platform.yaml
+  - operators/
+  - platform/
