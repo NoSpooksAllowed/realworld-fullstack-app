@@ -6,3 +6,4 @@ resources:
   - gcp-storage-secret.enc.yaml
   - backup-schedule.yaml
   - podmonitor.yaml
+  - namespace.yaml

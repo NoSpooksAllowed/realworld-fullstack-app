@@ -2,7 +2,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgres
-  namespace: realworld-app
+  namespace: database
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:18.1-system-trixie@sha256:1fdc62057f9ce3b635fbbf42f35ff0edc8781621ebc82edb7d75508991bb9b06
 
