@@ -5,6 +5,6 @@ metadata:
   namespace: envoy-system
 spec:
   interval: 24h
-  url: oci://docker.io/envoyproxy/gateway-helm
+  url: oci://registry-1.docker.io/nomadxynta/envoy-proxy-gateway-helm-patched
   ref:
-    semver: "1.x"
+    tag: v1.7.1
