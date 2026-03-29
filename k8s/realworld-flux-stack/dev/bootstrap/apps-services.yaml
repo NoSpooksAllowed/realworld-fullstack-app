@@ -6,12 +6,12 @@ metadata:
 spec:
   interval: 5m
   path: ./k8s/realworld-apps-stack/dev
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: platform
+    - name: database
     - name: apps-common
   decryption:
     provider: sops
