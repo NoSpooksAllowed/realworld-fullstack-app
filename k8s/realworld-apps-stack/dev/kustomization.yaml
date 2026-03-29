@@ -4,3 +4,4 @@ namespace: realworld-app
 resources:
   - backend/
   - frontend/
+  - namespace.yaml
