@@ -9,6 +9,9 @@ spec:
     kind: OCIRepository
     name: cert-manager
   values:
+    serviceAccount:
+      annotations:
+        iam.gke.io/gcp-service-account: cert-manager@realworld-app-483521.iam.gserviceaccount.com
     crds:
       enabled: true
     config:

@@ -10,9 +10,6 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-key
     solvers:
-      - http01:
-          gatewayHTTPRoute:
-            parentRefs:
-              - kind: Gateway
-                name: envoy-gateway
-                namespace: envoy-system
+      - dns01:
+          cloudDNS:
+            project: realworld-app-483521
