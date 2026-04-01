@@ -12,7 +12,3 @@ spec:
     - group: ""
       kind: Secret
       name: root-tls
-
-    - group: ""
-      kind: Secret
-      name: grafana-tls

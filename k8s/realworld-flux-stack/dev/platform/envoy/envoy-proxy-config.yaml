@@ -9,4 +9,4 @@ spec:
     kubernetes:
       envoyService:
         type: LoadBalancer
-        loadBalancerIP: "34.39.152.132"
+        loadBalancerIP: "34.39.145.125"

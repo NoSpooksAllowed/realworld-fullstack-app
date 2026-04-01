@@ -21,6 +21,3 @@ spec:
           - kind: Secret
             name: root-tls
             namespace: cert-manager
-          - kind: Secret
-            name: grafana-tls
-            namespace: cert-manager
