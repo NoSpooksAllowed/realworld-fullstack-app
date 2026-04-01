@@ -9,7 +9,7 @@ spec:
       sectionName: http
   hostnames:
     - "mydevopsjourney.fun"
-    - "*.mydevopsjourney.fun"
+    - "grafana.mydevopsjourney.fun"
   rules:
     - filters:
         - type: RequestRedirect
