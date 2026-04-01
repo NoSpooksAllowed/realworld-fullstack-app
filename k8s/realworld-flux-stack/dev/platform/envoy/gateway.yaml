@@ -20,8 +20,7 @@ spec:
         mode: Terminate
         certificateRefs:
           - kind: Secret
-            name: root-tls
-            namespace: cert-manager
+            name: mydevopsjourney-fun-tls
 
     - name: https-wildcard
       port: 443
@@ -31,5 +30,4 @@ spec:
         mode: Terminate
         certificateRefs:
           - kind: Secret
-            name: root-tls
-            namespace: cert-manager
+            name: wildcard-mydevopsjourney-fun-tls

@@ -5,5 +5,4 @@ resources:
   - gateway-class.yaml
   - gateway.yaml
   - tls-redirect.yaml
-  - reference-grant-cert-manager.yaml
   - routes/
