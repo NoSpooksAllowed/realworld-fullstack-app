@@ -15,6 +15,18 @@ spec:
     - name: https
       port: 443
       protocol: HTTPS
+      hostname: "mydevopsjourney.fun"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: root-tls
+            namespace: cert-manager
+
+    - name: https-wildcard
+      port: 443
+      protocol: HTTPS
+      hostname: "*.mydevopsjourney.fun"
       tls:
         mode: Terminate
         certificateRefs:
